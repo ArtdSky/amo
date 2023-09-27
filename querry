@@ -1,0 +1,21 @@
+1. 
+SELECT DISTINCT student_id
+FROM Results
+WHERE teacher1_score = 5 OR teacher2_score = 5;
+
+
+2.
+SELECT DISTINCT T.name
+FROM Teachers AS T
+JOIN Results AS R
+ON T.id = R.teacher1_id OR T.id = R.teacher2_id
+WHERE R.teacher1_score = 2 OR R.teacher2_score = 2;
+
+3.
+SELECT S.name
+FROM Students AS S
+JOIN Results AS R
+ON S.id = R.student_id
+WHERE R.teacher1_score = 4 AND R.teacher2_score = 4;
+
+

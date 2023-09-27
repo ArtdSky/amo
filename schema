@@ -1,0 +1,63 @@
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Teachers (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Tests (
+    id INT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Results (
+    id INT PRIMARY KEY,
+    student_id INT,
+    test_id INT,
+    teacher1_id INT,
+    teacher1_score INT,
+    teacher2_id INT,
+    teacher2_score INT,
+    FOREIGN KEY (student_id) REFERENCES Students(id),
+    FOREIGN KEY (test_id) REFERENCES Tests(id),
+    FOREIGN KEY (teacher1_id) REFERENCES Teachers(id),
+    FOREIGN KEY (teacher2_id) REFERENCES Teachers(id)
+);
+
+
+-- Заполнение таблицы
+
+INSERT INTO Students (id, name) VALUES 
+(1, 'Иванов'),
+(2, 'Смирнов'),
+(3, 'Кузнецов'),
+(4, 'Петров'),
+(5, 'Соколов');
+
+
+INSERT INTO Teachers (id, name) VALUES 
+(1, 'Владимир Владимирович'),
+(2, 'Виктор Виктоович'),
+(3, 'Николай Николаевич'),
+(4, 'Александр Александрович'),
+(5, 'Виталий Витальевич');
+
+
+INSERT INTO Tests (id, title) VALUES 
+(1, 'Математика'),
+(2, 'Физика'),
+(3, 'Химия'),
+(4, 'Биология'),
+(5, 'История');
+
+
+INSERT INTO Results (id, student_id, test_id, teacher1_id, teacher1_score, teacher2_id, teacher2_score) VALUES 
+(1, 1, 1, 1, 4, 2, 5),   
+(2, 2, 2, 2, 3, 3, 4), 
+(3, 3, 3, 3, 5, 4, 4),  
+(4, 4, 4, 4, 2, 5, 3),
+(5, 5, 5, 5, 3, 1, 2);
+
